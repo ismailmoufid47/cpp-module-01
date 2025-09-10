@@ -13,15 +13,15 @@ int main(int ac, char **av)
 	std::string s2 = av[3];
 
 	std::ifstream infile(filename.c_str());
-	if (!infile)
+	if (!infile.is_open())
 	{
-		std::cerr << "Error: could not open file " << filename << std::endl;
+		std::cerr << "Error opening " << filename << ": " << std::strerror(errno) << std::endl;
 		return 1;
 	}
-	std::ofstream outfile((filename + ".replace").c_str());
-	if (!outfile)
+	std::ofstream outfile(filename + ".replace");
+	if (!outfile.is_open())
 	{
-		std::cerr << "Error: could not create output file " << filename + ".replace" << std::endl;
+		std::cerr << "Error opening " << filename << ".replace" << ": " << std::strerror(errno) << std::endl;
 		return 1;
 	}
 	std::string line;
