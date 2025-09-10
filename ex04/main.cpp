@@ -18,7 +18,7 @@ int main(int ac, char **av)
 		std::cerr << "Error: could not open file " << filename << std::endl;
 		return 1;
 	}
-	std::ofstream outfile(filename + ".replace");
+	std::ofstream outfile((filename + ".replace").c_str());
 	if (!outfile)
 	{
 		std::cerr << "Error: could not create output file " << filename + ".replace" << std::endl;
